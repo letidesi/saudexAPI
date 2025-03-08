@@ -5,13 +5,13 @@ export class Admin {
     @PrimaryGeneratedColumn("uuid")
     id!: string;
 
-    @Column({ type: "nvarchar", length: 200 })
+    @Column({ type: "nvarchar", length: 200, nullable: false })
     name!: string;
     
-    @Column({ type: "nvarchar", length: 255, unique: true})
+    @Column({ type: "nvarchar", length: 255, unique: true, nullable: false})
     email!: string;
 
-    @Column({type: "nvarchar", length: 255})
+    @Column({type: "nvarchar", length: 255, nullable: false})
     passwordHash!: string
 
     @UpdateDateColumn()
