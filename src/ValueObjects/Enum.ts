@@ -1,0 +1,5 @@
+export enum MedicalCenterType {
+    HOSPITAL = "HOSPITAL",
+    HEALTHCENTER = "HEALTHCENTER",
+    PHARMACEUTICAL = "PHARMACEUTICAL",
+}
