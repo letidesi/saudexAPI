@@ -1,0 +1,26 @@
+{
+  "name": "saudexapi",
+  "version": "1.0.0",
+  "description": "A nova API Saudex 2.0 foi desenvolvida para facilitar o acesso de pessoas diabéticas aos insumos essenciais para o tratamento com insulina. Seu principal objetivo é garantir que aqueles que necessitam de insumos gratuitos tenham um suporte eficiente, seguro e acessível.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mssql": "^11.0.1",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.21"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.10",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}
