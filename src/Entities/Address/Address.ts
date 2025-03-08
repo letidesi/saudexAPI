@@ -1,4 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { MedicalCenter } from "../MedicalCenter/MedicalCenter";
 
 @Entity("Address")
 export class Address {
@@ -26,8 +27,8 @@ export class Address {
     @Column({ type: "nvarchar", length: 10, nullable: false })
     zipCode!: string;
 
-    // @OneToMany(() => MedicalCenter, (medicalCenter) => medicalCenter.address)
-    // medicalCenters!: MedicalCenter[];
+    @OneToMany(() => MedicalCenter, (medicalCenter) => medicalCenter.address)
+    medicalCenters!: MedicalCenter[];
 
     @UpdateDateColumn()
     createdAt!: Date;
