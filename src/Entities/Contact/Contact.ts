@@ -1,6 +1,7 @@
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { ContactAdmin } from "../Associations/ContactAdmin/ContactAdmin";
 import { ContactMedicalCenter } from "../Associations/ContactMedicalCenter/ContactMedicalCenter";
+import { ContactUser } from "../Associations/ContactUser/ContactUser";
 
 @Entity("Contact")
 export class Contact {
@@ -18,6 +19,9 @@ export class Contact {
 
     @OneToMany(() => ContactMedicalCenter, (c) => c.contact, { cascade: true })
     contactMedicalCenters!: ContactMedicalCenter[];
+
+    @OneToMany(() => ContactUser, (c) => c.contact, { cascade: true })
+    contactUsers!: ContactUser[];
 
     @CreateDateColumn()
     createdAt!: Date;
