@@ -3,3 +3,4 @@ export enum MedicalCenterType {
     HEALTHCENTER = "HEALTHCENTER",
     PHARMACEUTICAL = "PHARMACEUTICAL",
 }
+
