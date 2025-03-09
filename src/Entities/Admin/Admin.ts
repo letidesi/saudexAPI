@@ -19,7 +19,7 @@ export class Admin {
     @OneToMany(() => ContactAdmin, (c) => c.admin, { cascade: true })
     contacts!: ContactAdmin[];
 
-    @ManyToOne(() => Address, {nullable: true})
+    @ManyToOne(() => Address, { nullable: true })
     address?: Address;
 
     @CreateDateColumn()
