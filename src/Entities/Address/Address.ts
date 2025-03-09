@@ -1,5 +1,6 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { AddressMedicalCenter } from "../Associations/AddressMedicalCenter/AddressMedicalCenter";
+import { User } from "../User/User";
 
 @Entity("Address")
 export class Address {
@@ -29,6 +30,9 @@ export class Address {
 
     @OneToMany(() => AddressMedicalCenter, (m) => m.address)
     addressMedicalCenters!: AddressMedicalCenter[];
+
+    @OneToOne(() => User, (u) => u.address)
+    user!: User
 
     @CreateDateColumn()
     createdAt!: Date;
