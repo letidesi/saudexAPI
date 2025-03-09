@@ -1,5 +1,6 @@
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { UserRole } from "../Associations/UserRole/UserRole";
+import { ContactUser } from "../Associations/ContactUser/ContactUser";
 
 @Entity("User")
 export class User {
@@ -15,7 +16,9 @@ export class User {
     @Column({ type: "nvarchar", length: 255, nullable: false })
     passwordHash!: string;
 
-    // TODO: criar relação com contato e usuário
+    @OneToMany(() => ContactUser, (c) => c.user, { cascade: true })
+    contactUsers!: ContactUser[];
+
     // TODO: criar relação com endereço e usuário
 
     @OneToMany(() => UserRole, (u) => u.user, { cascade: true })
