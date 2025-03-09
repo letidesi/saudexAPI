@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { ContactAdmin } from "../Associations/ContactAdmin/ContactAdmin";
 
 @Entity("Admin")
 export class Admin {
@@ -7,16 +8,19 @@ export class Admin {
 
     @Column({ type: "nvarchar", length: 200, nullable: false })
     name!: string;
-    
-    @Column({ type: "nvarchar", length: 255, unique: true, nullable: false})
-    email!: string;
 
-    @Column({type: "nvarchar", length: 255, nullable: false})
+    @Column({ type: "nvarchar", length: 255, nullable: false })
     passwordHash!: string
 
-    @UpdateDateColumn()
+    @OneToMany(() => ContactAdmin, (c) => c.admin, { cascade: true })
+    contacts!: ContactAdmin[];
+
+    @CreateDateColumn()
     createdAt!: Date;
 
     @UpdateDateColumn()
-    updateCreatedAt!: Date
+    updatedAt!: Date
+
+    @DeleteDateColumn()
+    deletedAt!: Date
 }
