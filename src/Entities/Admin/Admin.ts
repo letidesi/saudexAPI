@@ -1,5 +1,6 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { ContactAdmin } from "../Associations/ContactAdmin/ContactAdmin";
+import { Address } from "../Address/Address";
 
 @Entity("Admin")
 export class Admin {
@@ -14,6 +15,9 @@ export class Admin {
 
     @OneToMany(() => ContactAdmin, (c) => c.admin, { cascade: true })
     contacts!: ContactAdmin[];
+
+    @ManyToOne(() => Address, {nullable: true})
+    address?: Address;
 
     @CreateDateColumn()
     createdAt!: Date;
