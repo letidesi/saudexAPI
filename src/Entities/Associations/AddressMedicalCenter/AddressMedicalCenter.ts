@@ -10,7 +10,7 @@ export class AddressMedicalCenter {
     @ManyToOne(() => MedicalCenter, (m) => m.addresses, { nullable: false })
     medicalCenter!: MedicalCenter;
 
-    @ManyToOne(() => Address, (a) => a.addresseMedicalCenters, { nullable: false })
+    @ManyToOne(() => Address, (a) => a.addressMedicalCenters, { nullable: false })
     address!: Address;
 
     @Column({ type: "boolean", default: false })
