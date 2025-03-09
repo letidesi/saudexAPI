@@ -7,9 +7,9 @@ export class ContactAdmin {
     @PrimaryGeneratedColumn("uuid")
     id!: string;
 
-    @ManyToOne(() => Admin, (a) => a.contacts, {nullable: false})
+    @ManyToOne(() => Admin, (a) => a.contacts, { nullable: false })
     admin!: Admin;
 
-    @ManyToOne(() => Contact, (c) => c.contactAdmins, {nullable: false})
+    @ManyToOne(() => Contact, (c) => c.contactAdmins, { nullable: false })
     contact!: Contact
 }
