@@ -2,6 +2,7 @@ import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryG
 import { MedicalCenterType } from "../../ValueObjects/MedicalCenter/MedicalCenterEnum";
 import { ContactMedicalCenter } from "../Associations/ContactMedicalCenter/ContactMedicalCenter";
 import { AddressMedicalCenter } from "../Associations/AddressMedicalCenter/AddressMedicalCenter";
+import { OperatingHour } from "../OperatingHour/Operatinghour";
 
 @Entity("MedicalCenter")
 export class MedicalCenter {
@@ -22,6 +23,9 @@ export class MedicalCenter {
 
     @OneToMany(() => ContactMedicalCenter, (c) => c.medicalCenter, { cascade: true }) // Agora via tabela intermediária
     contacts!: ContactMedicalCenter[];
+
+    @OneToMany(() => OperatingHour, (o) => o.medicalCenter, { cascade: true })
+    operatingHours!: OperatingHour[];
 
     @CreateDateColumn()
     createdAt!: Date;
