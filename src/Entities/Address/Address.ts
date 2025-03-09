@@ -28,7 +28,7 @@ export class Address {
     zipCode!: string;
 
     @OneToMany(() => AddressMedicalCenter, (m) => m.address)
-    addresseMedicalCenters!: AddressMedicalCenter[];
+    addressMedicalCenters!: AddressMedicalCenter[];
 
     @CreateDateColumn()
     createdAt!: Date;
