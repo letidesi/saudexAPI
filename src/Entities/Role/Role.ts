@@ -7,10 +7,10 @@ export class Role {
     @PrimaryGeneratedColumn("uuid")
     id!: string;
 
-    @Column({ type: "nvarchar", length: 100, unique: true, nullable: false})
+    @Column({ type: "nvarchar", length: 100, unique: true, nullable: false, default: RoleType.GUEST })
     type!: RoleType;
 
-    @OneToMany(() => UserRole, (u) => u.role, {cascade: true})
+    @OneToMany(() => UserRole, (u) => u.role, { cascade: true })
     users!: UserRole[];
 
     @CreateDateColumn()
