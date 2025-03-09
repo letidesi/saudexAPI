@@ -1,5 +1,5 @@
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { MedicalCenterType } from "../../ValueObjects/Enum";
+import { MedicalCenterType } from "../../ValueObjects/MedicalCenter/MedicalCenterEnum";
 import { ContactMedicalCenter } from "../Associations/ContactMedicalCenter/ContactMedicalCenter";
 import { AddressMedicalCenter } from "../Associations/AddressMedicalCenter/AddressMedicalCenter";
 
