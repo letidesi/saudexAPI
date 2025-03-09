@@ -16,7 +16,7 @@ export class Contact {
     @OneToMany(() => ContactAdmin, (c) => c.contact, { cascade: true })
     contactAdmins!: ContactAdmin[];
 
-    @OneToMany(() => ContactMedicalCenter, (c) => c.contact, { cascade: true }) 
+    @OneToMany(() => ContactMedicalCenter, (c) => c.contact, { cascade: true })
     contactMedicalCenters!: ContactMedicalCenter[];
 
     @CreateDateColumn()
