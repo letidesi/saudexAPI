@@ -14,7 +14,7 @@ export class MedicalCenter {
     @Column({ type: "nvarchar", length: 50, nullable: false })
     type!: MedicalCenterType;
 
-    @Column({type: "nvarchar", length: 20, unique: true, nullable: false})
+    @Column({ type: "nvarchar", length: 20, unique: true, nullable: false })
     cnpj!: string;
 
     @OneToMany(() => AddressMedicalCenter, (m) => m.medicalCenter, { cascade: true })
