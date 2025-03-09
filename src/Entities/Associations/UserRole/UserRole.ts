@@ -7,9 +7,9 @@ export class UserRole {
     @PrimaryGeneratedColumn("uuid")
     id!: string;
 
-    @ManyToOne(() => User, (u) => u.roles, {nullable: false})
+    @ManyToOne(() => User, (u) => u.roles, { nullable: false })
     user!: User;
 
-    @ManyToOne(() => Role, (r) => r.users, {nullable: false})
+    @ManyToOne(() => Role, (r) => r.users, { nullable: false })
     role!: Role;
 }
