@@ -1,6 +1,7 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { UserRole } from "../Associations/UserRole/UserRole";
 import { ContactUser } from "../Associations/ContactUser/ContactUser";
+import { Address } from "../Address/Address";
 
 @Entity("User")
 export class User {
@@ -19,7 +20,9 @@ export class User {
     @OneToMany(() => ContactUser, (c) => c.user, { cascade: true })
     contactUsers!: ContactUser[];
 
-    // TODO: criar relação com endereço e usuário
+    @OneToOne(() => Address, {cascade: true, nullable: true })
+    @JoinColumn({ name: "addressId"})
+    address?: Address;
 
     @OneToMany(() => UserRole, (u) => u.user, { cascade: true })
     roles!: UserRole[];
