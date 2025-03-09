@@ -1,5 +1,5 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { MedicalCenter } from "../MedicalCenter/MedicalCenter";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { AddressMedicalCenter } from "../Associations/AddressMedicalCenter/AddressMedicalCenter";
 
 @Entity("Address")
 export class Address {
@@ -27,12 +27,15 @@ export class Address {
     @Column({ type: "nvarchar", length: 10, nullable: false })
     zipCode!: string;
 
-    @OneToMany(() => MedicalCenter, (medicalCenter) => medicalCenter.address)
-    medicalCenters!: MedicalCenter[];
+    @OneToMany(() => AddressMedicalCenter, (m) => m.address)
+    addresseMedicalCenters!: AddressMedicalCenter[];
 
-    @UpdateDateColumn()
+    @CreateDateColumn()
     createdAt!: Date;
 
     @UpdateDateColumn()
-    updateCreatedAt!: Date
+    updatedAt!: Date
+
+    @DeleteDateColumn()
+    deletedAt!: Date
 }
