@@ -1,6 +1,7 @@
-import { Column, CreateDateColumn, DeleteDateColumn, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { UserRole } from "../Associations/UserRole/UserRole";
 
+@Entity("User")
 export class User {
     @PrimaryGeneratedColumn("uuid")
     id!: string;
