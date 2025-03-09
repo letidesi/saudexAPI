@@ -1,6 +1,7 @@
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { RoleType } from "../../ValueObjects/Role/RoleEnum";
 import { UserRole } from "../Associations/UserRole/UserRole";
+import { RolePermission } from "../Associations/RolePermission/RolePermission";
 
 @Entity("Role")
 export class Role {
@@ -12,6 +13,9 @@ export class Role {
 
     @OneToMany(() => UserRole, (u) => u.role, { cascade: true })
     users!: UserRole[];
+
+    @OneToMany(() => RolePermission, (r) => r.role, { cascade: true })
+    permissions!: RolePermission[];
 
     @CreateDateColumn()
     createdAt!: Date;
