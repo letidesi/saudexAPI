@@ -8,7 +8,10 @@ export class Admin {
     id!: string;
 
     @Column({ type: "nvarchar", length: 200, nullable: false })
-    name!: string;
+    firstName!: string;
+
+    @Column({ type: "nvarchar", length: 200, nullable: false })
+    lastName!: string;
 
     @Column({ type: "nvarchar", length: 255, nullable: false })
     passwordHash!: string
