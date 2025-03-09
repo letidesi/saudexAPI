@@ -1,6 +1,7 @@
-import { Column, Entity, ManyToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { MedicalCenterType } from "../../ValueObjects/Enum";
-import { Address } from "../Address/Address";
+import { ContactMedicalCenter } from "../Associations/ContactMedicalCenter/ContactMedicalCenter";
+import { AddressMedicalCenter } from "../Associations/AddressMedicalCenter/AddressMedicalCenter";
 
 @Entity("MedicalCenter")
 export class MedicalCenter {
@@ -13,15 +14,18 @@ export class MedicalCenter {
     @Column({ type: "nvarchar", length: 50, nullable: false })
     type!: MedicalCenterType;
 
-    @Column({ type: "nvarchar", length: 20, nullable: true })
-    phone?: string;
+    @OneToMany(() => AddressMedicalCenter, (m) => m.medicalCenter, { cascade: true })
+    addresses!: AddressMedicalCenter[];
 
-    @ManyToMany(() => Address, (address) => address.medicalCenters, { nullable: false })
-    address!: Address;
+    @OneToMany(() => ContactMedicalCenter, (c) => c.medicalCenter, { cascade: true }) // Agora via tabela intermediária
+    contacts!: ContactMedicalCenter[];
 
-    @UpdateDateColumn()
+    @CreateDateColumn()
     createdAt!: Date;
 
     @UpdateDateColumn()
-    updateCreatedAt!: Date
+    updatedAt!: Date
+
+    @DeleteDateColumn()
+    deletedAt!: Date
 }
