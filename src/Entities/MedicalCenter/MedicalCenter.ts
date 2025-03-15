@@ -3,6 +3,8 @@ import { MedicalCenterType } from "../../ValueObjects/MedicalCenter/MedicalCente
 import { ContactMedicalCenter } from "../Associations/ContactMedicalCenter/ContactMedicalCenter";
 import { AddressMedicalCenter } from "../Associations/AddressMedicalCenter/AddressMedicalCenter";
 import { OperatingHour } from "../OperatingHour/Operatinghour";
+import { Medication } from "../Medication/Medication";
+import { Doctor } from "../Doctor/Doctor";
 
 @Entity("MedicalCenter")
 export class MedicalCenter {
@@ -21,11 +23,17 @@ export class MedicalCenter {
     @OneToMany(() => AddressMedicalCenter, (m) => m.medicalCenter, { cascade: true })
     addresses!: AddressMedicalCenter[];
 
-    @OneToMany(() => ContactMedicalCenter, (c) => c.medicalCenter, { cascade: true }) // Agora via tabela intermediária
+    @OneToMany(() => ContactMedicalCenter, (c) => c.medicalCenter, { cascade: true })
     contacts!: ContactMedicalCenter[];
 
     @OneToMany(() => OperatingHour, (o) => o.medicalCenter, { cascade: true })
     operatingHours!: OperatingHour[];
+
+    @OneToMany(() => Doctor, (doctor) => doctor.medicalCenter, { cascade: true })
+    doctors!: Doctor[];
+
+    @OneToMany(() => Medication, (medication) => medication.medicalCenter, { cascade: true })
+    medications!: Medication[];
 
     @CreateDateColumn()
     createdAt!: Date;
