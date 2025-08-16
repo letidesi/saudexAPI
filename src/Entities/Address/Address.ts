@@ -1,26 +1,18 @@
 import {
   Column,
-  CreateDateColumn,
-  DeleteDateColumn,
   Entity,
   JoinColumn,
   OneToMany,
   OneToOne,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
 } from 'typeorm';
 import { AddressMedicalCenter } from '../Associations/AddressMedicalCenter/AddressMedicalCenter';
 import { User } from '../User/User';
+import { EntityWithTimestamps } from '../../Helpers/EntityWithTimestamps';
 
 @Entity('Address', {
   comment: 'Tabela que armazena os endereços de usuários e centros médicos.',
 })
-export class Address {
-  @PrimaryGeneratedColumn('uuid', {
-    comment: 'Identificador único do endereço (UUID).',
-  })
-  id!: string;
-
+export class Address extends EntityWithTimestamps {
   @Column({
     type: 'nvarchar',
     length: 255,
@@ -87,19 +79,4 @@ export class Address {
     comment: 'Chave estrangeira que referencia o usuário deste endereço.',
   })
   user!: User;
-
-  @CreateDateColumn({
-    comment: 'Data de criação do registro',
-  })
-  createdAt!: Date;
-
-  @UpdateDateColumn({
-    comment: 'Data de atualização do registro',
-  })
-  updatedAt!: Date;
-
-  @DeleteDateColumn({
-    comment: 'Data de exclusão do registro',
-  })
-  deletedAt!: Date;
 }
