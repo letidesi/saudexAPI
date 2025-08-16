@@ -1,26 +1,18 @@
 import {
   Column,
-  CreateDateColumn,
-  DeleteDateColumn,
   Entity,
   OneToMany,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
 } from 'typeorm';
 import { ContactAdmin } from '../Associations/ContactAdmin/ContactAdmin';
 import { ContactMedicalCenter } from '../Associations/ContactMedicalCenter/ContactMedicalCenter';
 import { ContactUser } from '../Associations/ContactUser/ContactUser';
+import { EntityWithTimestamps } from '../../Helpers/EntityWithTimestamps';
 
 @Entity('Contact', {
   comment:
     'Tabela que armazena os contatos de usuários, administradores e centros médicos.',
 })
-export class Contact {
-  @PrimaryGeneratedColumn('uuid', {
-    comment: 'Identificador único do contato (UUID).',
-  })
-  id!: string;
-
+export class Contact extends EntityWithTimestamps {
   @Column({
     type: 'nvarchar',
     length: 50,
@@ -45,13 +37,4 @@ export class Contact {
 
   @OneToMany(() => ContactUser, (c) => c.contact, { cascade: true })
   contactUsers!: ContactUser[];
-
-  @CreateDateColumn({ comment: 'Data de criação do registro.' })
-  createdAt!: Date;
-
-  @UpdateDateColumn({ comment: 'Data da última atualização do registro.' })
-  updatedAt!: Date;
-
-  @DeleteDateColumn({ comment: 'Data de exclusão do registro.' })
-  deletedAt!: Date;
 }
