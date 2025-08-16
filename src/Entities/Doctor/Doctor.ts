@@ -2,25 +2,45 @@ import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { MedicalCenter } from "../MedicalCenter/MedicalCenter";
 import { Gender } from "../../ValueObjects/Doctor/GenderEnum";
 
-@Entity("Doctor")
-export class Doctor
-{
-    @PrimaryGeneratedColumn("uuid")
+@Entity("Doctor", {
+    comment: "Tabela que armazena os médicos associados a centros médicos."
+})
+export class Doctor {
+    @PrimaryGeneratedColumn("uuid", {
+        comment: "Identificador único do médico (UUID)."
+    })
     id!: string;
 
     @ManyToOne(() => MedicalCenter, (medicalCenter) => medicalCenter.doctors, { nullable: false, cascade: true })
     medicalCenter!: MedicalCenter;
 
-    @Column({ type: "nvarchar", length: 255, nullable: false })
+    @Column({
+        type: "nvarchar",
+        length: 255, nullable: false,
+        comment: "Nome completo do médico."
+    })
     name!: string;
 
-    @Column({ type: "nvarchar", length: 255, nullable: false })
-    specialty!: string; 
+    @Column({
+        type: "nvarchar",
+        length: 255, nullable: false,
+        comment: "Especialidade médica do profissional."
+    })
+    specialty!: string;
 
-    @Column({ type: "enum", enum: Gender, nullable: false })
-    gender!: Gender; 
+    @Column({
+        type: "enum",
+        enum: Gender,
+        nullable: false,
+        comment: "Gênero do médico."
+    })
+    gender!: Gender;
 
-    @Column({ type: "int", nullable: false, default: 0 })
+    @Column({
+        type: "int",
+        nullable: false,
+        default: 0,
+        comment: "Quantidade de tickets disponíveis para agendamento."
+    })
     availableTickets!: number;
-
 }
