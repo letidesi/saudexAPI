@@ -1,20 +1,12 @@
 import {
   Column,
-  CreateDateColumn,
-  DeleteDateColumn,
   ManyToOne,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
 } from 'typeorm';
 import { MedicalCenter } from '../MedicalCenter/MedicalCenter';
 import { WeekDay } from '../../ValueObjects/OperatingHour/OperatingHourEnum';
+import { EntityWithTimestamps } from '../../Helpers/EntityWithTimestamps';
 
-export class OperatingHour {
-  @PrimaryGeneratedColumn('uuid', {
-    comment: 'Identificador único do horário de funcionamento (UUID).',
-  })
-  id!: string;
-
+export class OperatingHour extends EntityWithTimestamps {
   @ManyToOne(() => MedicalCenter, (m) => m.operatingHours, {
     nullable: false,
     cascade: true,
@@ -42,13 +34,4 @@ export class OperatingHour {
     comment: 'Hora de fechamento do centro médico.',
   })
   closeTime!: string;
-
-  @CreateDateColumn({ comment: 'Data de criação do registro.' })
-  createdAt!: Date;
-
-  @UpdateDateColumn({ comment: 'Data da última atualização do registro.' })
-  updatedAt!: Date;
-
-  @DeleteDateColumn({ comment: 'Data de exclusão.' })
-  deletedAt!: Date;
 }
