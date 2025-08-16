@@ -1,25 +1,17 @@
 import {
   Column,
-  CreateDateColumn,
-  DeleteDateColumn,
   Entity,
   ManyToOne,
   OneToMany,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
 } from 'typeorm';
 import { ContactAdmin } from '../Associations/ContactAdmin/ContactAdmin';
 import { Address } from '../Address/Address';
+import { EntityWithTimestamps } from '../../Helpers/EntityWithTimestamps';
 
 @Entity('Admin', {
   comment: 'Tabela que armazena os administradores do sistema.',
 })
-export class Admin {
-  @PrimaryGeneratedColumn('uuid', {
-    comment: 'Identificador único do administrador (UUID).',
-  })
-  id!: string;
-
+export class Admin extends EntityWithTimestamps {
   @Column({
     type: 'nvarchar',
     length: 200,
@@ -49,13 +41,4 @@ export class Admin {
 
   @ManyToOne(() => Address, { nullable: true })
   address?: Address;
-
-  @CreateDateColumn({ comment: 'Data de criação do registro.' })
-  createdAt!: Date;
-
-  @UpdateDateColumn({ comment: 'Data da última atualização do registro.' })
-  updatedAt!: Date;
-
-  @DeleteDateColumn({ comment: 'Data de exclusão.' })
-  deletedAt!: Date;
 }
