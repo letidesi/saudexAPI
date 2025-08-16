@@ -1,11 +1,7 @@
 import {
   Column,
-  CreateDateColumn,
-  DeleteDateColumn,
   Entity,
   OneToMany,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
 } from 'typeorm';
 import { MedicalCenterType } from '../../ValueObjects/MedicalCenter/MedicalCenterEnum';
 import { ContactMedicalCenter } from '../Associations/ContactMedicalCenter/ContactMedicalCenter';
@@ -13,17 +9,13 @@ import { AddressMedicalCenter } from '../Associations/AddressMedicalCenter/Addre
 import { OperatingHour } from '../OperatingHour/Operatinghour';
 import { Medication } from '../Medication/Medication';
 import { Doctor } from '../Doctor/Doctor';
+import { EntityWithTimestamps } from '../../Helpers/EntityWithTimestamps';
 
 @Entity('MedicalCenter', {
   comment:
     'Tabela que armazena os centros médicos e suas informações principais.',
 })
-export class MedicalCenter {
-  @PrimaryGeneratedColumn('uuid', {
-    comment: 'Identificador único do centro médico (UUID).',
-  })
-  id!: string;
-
+export class MedicalCenter extends EntityWithTimestamps {
   @Column({
     type: 'nvarchar',
     length: 255,
@@ -69,13 +61,4 @@ export class MedicalCenter {
     cascade: true,
   })
   medications!: Medication[];
-
-  @CreateDateColumn({ comment: 'Data de criação do registro.' })
-  createdAt!: Date;
-
-  @UpdateDateColumn({ comment: 'Data da última atualização do registro.' })
-  updatedAt!: Date;
-
-  @DeleteDateColumn({ comment: 'Data de exclusão.' })
-  deletedAt!: Date;
 }
