@@ -17,6 +17,6 @@ export abstract class EntityWithTimestamps {
   @UpdateDateColumn({ comment: 'Data da última atualização do registro.' })
   updatedAt!: Date;
 
-  @DeleteDateColumn({ comment: 'Data de exclusão lógica (soft delete).' })
+  @DeleteDateColumn({ comment: 'Data de exclusão do registro.' })
   deletedAt!: Date;
 }
