@@ -1,16 +1,12 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne } from 'typeorm';
 import { MedicalCenter } from '../MedicalCenter/MedicalCenter';
 import { Gender } from '../../ValueObjects/Doctor/GenderEnum';
+import { EntityWithTimestamps } from '../../Helpers/EntityWithTimestamps';
 
 @Entity('Doctor', {
   comment: 'Tabela que armazena os médicos associados a centros médicos.',
 })
-export class Doctor {
-  @PrimaryGeneratedColumn('uuid', {
-    comment: 'Identificador único do médico (UUID).',
-  })
-  id!: string;
-
+export class Doctor extends EntityWithTimestamps {
   @ManyToOne(() => MedicalCenter, (medicalCenter) => medicalCenter.doctors, {
     nullable: false,
     cascade: true,
