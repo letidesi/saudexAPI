@@ -6,18 +6,32 @@ import { OperatingHour } from "../OperatingHour/Operatinghour";
 import { Medication } from "../Medication/Medication";
 import { Doctor } from "../Doctor/Doctor";
 
-@Entity("MedicalCenter")
+@Entity("MedicalCenter", {
+    comment: "Tabela que armazena os centros médicos e suas informações principais."
+})
 export class MedicalCenter {
-    @PrimaryGeneratedColumn("uuid")
+    @PrimaryGeneratedColumn("uuid", {
+        comment: "Identificador único do centro médico (UUID)."
+    })
     id!: string;
 
-    @Column({ type: "nvarchar", length: 255, nullable: false })
+    @Column({ 
+        type: "nvarchar", 
+        length: 255, 
+        nullable: false, 
+        comment: "Nome do centro médico." })
     name!: string;
 
-    @Column({ type: "nvarchar", length: 50, nullable: false })
+    @Column({ 
+        type: "nvarchar", 
+        length: 50, nullable: false, 
+        comment: "Tipo do centro médico (ex: Hospital, Clínica, Laboratório)." })
     type!: MedicalCenterType;
 
-    @Column({ type: "nvarchar", length: 20, unique: true, nullable: false })
+    @Column({ type: "nvarchar", 
+        length: 20, unique: true, 
+        nullable: false, 
+        comment: "CNPJ do centro médico." })
     cnpj!: string;
 
     @OneToMany(() => AddressMedicalCenter, (m) => m.medicalCenter, { cascade: true })
@@ -35,12 +49,12 @@ export class MedicalCenter {
     @OneToMany(() => Medication, (medication) => medication.medicalCenter, { cascade: true })
     medications!: Medication[];
 
-    @CreateDateColumn()
+    @CreateDateColumn({ comment: "Data de criação do registro." })
     createdAt!: Date;
 
-    @UpdateDateColumn()
-    updatedAt!: Date
+    @UpdateDateColumn({ comment: "Data da última atualização do registro." })
+    updatedAt!: Date;
 
-    @DeleteDateColumn()
-    deletedAt!: Date
+    @DeleteDateColumn({ comment: "Data de exclusão." })
+    deletedAt!: Date;
 }
