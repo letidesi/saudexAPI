@@ -1,15 +1,15 @@
-import {
-  Column,
-  ManyToOne,
-} from 'typeorm';
+import { Column, Entity, ManyToOne } from 'typeorm';
 import { MedicalCenter } from '../MedicalCenter/MedicalCenter';
 import { WeekDay } from '../../ValueObjects/OperatingHour/OperatingHourEnum';
 import { EntityWithTimestamps } from '../../Helpers/EntityWithTimestamps';
 
+@Entity('OperatingHour', {
+  comment:
+    'Tabela que armazena os horários de funcionamento dos centros médicos.',
+})
 export class OperatingHour extends EntityWithTimestamps {
   @ManyToOne(() => MedicalCenter, (m) => m.operatingHours, {
     nullable: false,
-    cascade: true,
   })
   medicalCenter!: MedicalCenter;
 
