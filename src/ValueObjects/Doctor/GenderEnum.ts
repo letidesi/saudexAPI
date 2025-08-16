@@ -1,7 +1,15 @@
 export enum Gender {
-    Male = "MALE",
-    Female = "FEMALE",
-    NonBinary = "NON_BINARY",
-    PreferNotToSay = "PREFER_NOT_TO_SAY",
-    Other = "OTHER"
+    Male,
+    Female,
+    NonBinary,
+    PreferNotToSay,
+    Other
 }
+
+export const translatedGender = {
+    [Gender.Male]: "Masculino",
+    [Gender.Female]: "Feminino",
+    [Gender.NonBinary]: "Não binário",
+    [Gender.PreferNotToSay]: "Prefiro não dizer",
+    [Gender.Other]: "Outro"
+};
