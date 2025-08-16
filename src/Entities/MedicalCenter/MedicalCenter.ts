@@ -1,12 +1,8 @@
-import {
-  Column,
-  Entity,
-  OneToMany,
-} from 'typeorm';
+import { Column, Entity, OneToMany } from 'typeorm';
 import { MedicalCenterType } from '../../ValueObjects/MedicalCenter/MedicalCenterEnum';
 import { ContactMedicalCenter } from '../Associations/ContactMedicalCenter/ContactMedicalCenter';
 import { AddressMedicalCenter } from '../Associations/AddressMedicalCenter/AddressMedicalCenter';
-import { OperatingHour } from '../OperatingHour/Operatinghour';
+import { OperatingHour } from '../OperatingHour/OperatingHour';
 import { Medication } from '../Medication/Medication';
 import { Doctor } from '../Doctor/Doctor';
 import { EntityWithTimestamps } from '../../Helpers/EntityWithTimestamps';
