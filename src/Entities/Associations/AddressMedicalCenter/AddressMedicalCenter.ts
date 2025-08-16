@@ -1,18 +1,18 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { MedicalCenter } from "../../MedicalCenter/MedicalCenter";
-import { Address } from "../../Address/Address";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { MedicalCenter } from '../../MedicalCenter/MedicalCenter';
+import { Address } from '../../Address/Address';
 
-@Entity("MedicalCenterAddress")
+@Entity('MedicalCenterAddress')
 export class AddressMedicalCenter {
-    @PrimaryGeneratedColumn("uuid")
-    id!: string;
+  @PrimaryGeneratedColumn('uuid')
+  id!: string;
 
-    @ManyToOne(() => MedicalCenter, (m) => m.addresses, { nullable: false })
-    medicalCenter!: MedicalCenter;
+  @ManyToOne(() => MedicalCenter, (m) => m.addresses, { nullable: false })
+  medicalCenter!: MedicalCenter;
 
-    @ManyToOne(() => Address, (a) => a.addressMedicalCenters, { nullable: false })
-    address!: Address;
+  @ManyToOne(() => Address, (a) => a.addressMedicalCenters, { nullable: false })
+  address!: Address;
 
-    @Column({ type: "boolean", default: false })
-    isPrincipal!: boolean
+  @Column({ type: 'boolean', default: false })
+  isPrincipal!: boolean;
 }

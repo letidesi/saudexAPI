@@ -1,11 +1,11 @@
 export enum MedicationType {
-    MEDICINE,
-    VACCINE,
-    INSULIN
+  MEDICINE,
+  VACCINE,
+  INSULIN,
 }
 
 export const translatedMedicationType = {
-    [MedicationType.MEDICINE]: "Remédio",
-    [MedicationType.VACCINE]: "Vacina",
-    [MedicationType.INSULIN]: "Insulina"
+  [MedicationType.MEDICINE]: 'Remédio',
+  [MedicationType.VACCINE]: 'Vacina',
+  [MedicationType.INSULIN]: 'Insulina',
 };

@@ -1,7 +1,7 @@
 interface ViaCepResponse {
-    logradouro: string;
-    bairro: string;
-    localidade: string;
-    uf: string;
-    erro?: boolean;
-  }
+  logradouro: string;
+  bairro: string;
+  localidade: string;
+  uf: string;
+  erro?: boolean;
+}

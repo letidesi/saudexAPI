@@ -1,60 +1,81 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { MedicalCenterType } from "../../ValueObjects/MedicalCenter/MedicalCenterEnum";
-import { ContactMedicalCenter } from "../Associations/ContactMedicalCenter/ContactMedicalCenter";
-import { AddressMedicalCenter } from "../Associations/AddressMedicalCenter/AddressMedicalCenter";
-import { OperatingHour } from "../OperatingHour/Operatinghour";
-import { Medication } from "../Medication/Medication";
-import { Doctor } from "../Doctor/Doctor";
+import {
+  Column,
+  CreateDateColumn,
+  DeleteDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
+import { MedicalCenterType } from '../../ValueObjects/MedicalCenter/MedicalCenterEnum';
+import { ContactMedicalCenter } from '../Associations/ContactMedicalCenter/ContactMedicalCenter';
+import { AddressMedicalCenter } from '../Associations/AddressMedicalCenter/AddressMedicalCenter';
+import { OperatingHour } from '../OperatingHour/Operatinghour';
+import { Medication } from '../Medication/Medication';
+import { Doctor } from '../Doctor/Doctor';
 
-@Entity("MedicalCenter", {
-    comment: "Tabela que armazena os centros médicos e suas informações principais."
+@Entity('MedicalCenter', {
+  comment:
+    'Tabela que armazena os centros médicos e suas informações principais.',
 })
 export class MedicalCenter {
-    @PrimaryGeneratedColumn("uuid", {
-        comment: "Identificador único do centro médico (UUID)."
-    })
-    id!: string;
+  @PrimaryGeneratedColumn('uuid', {
+    comment: 'Identificador único do centro médico (UUID).',
+  })
+  id!: string;
 
-    @Column({ 
-        type: "nvarchar", 
-        length: 255, 
-        nullable: false, 
-        comment: "Nome do centro médico." })
-    name!: string;
+  @Column({
+    type: 'nvarchar',
+    length: 255,
+    nullable: false,
+    comment: 'Nome do centro médico.',
+  })
+  name!: string;
 
-    @Column({ 
-        type: "nvarchar", 
-        length: 50, nullable: false, 
-        comment: "Tipo do centro médico (ex: Hospital, Clínica, Laboratório)." })
-    type!: MedicalCenterType;
+  @Column({
+    type: 'nvarchar',
+    length: 50,
+    nullable: false,
+    comment: 'Tipo do centro médico (ex: Hospital, Clínica, Laboratório).',
+  })
+  type!: MedicalCenterType;
 
-    @Column({ type: "nvarchar", 
-        length: 20, unique: true, 
-        nullable: false, 
-        comment: "CNPJ do centro médico." })
-    cnpj!: string;
+  @Column({
+    type: 'nvarchar',
+    length: 20,
+    unique: true,
+    nullable: false,
+    comment: 'CNPJ do centro médico.',
+  })
+  cnpj!: string;
 
-    @OneToMany(() => AddressMedicalCenter, (m) => m.medicalCenter, { cascade: true })
-    addresses!: AddressMedicalCenter[];
+  @OneToMany(() => AddressMedicalCenter, (m) => m.medicalCenter, {
+    cascade: true,
+  })
+  addresses!: AddressMedicalCenter[];
 
-    @OneToMany(() => ContactMedicalCenter, (c) => c.medicalCenter, { cascade: true })
-    contacts!: ContactMedicalCenter[];
+  @OneToMany(() => ContactMedicalCenter, (c) => c.medicalCenter, {
+    cascade: true,
+  })
+  contacts!: ContactMedicalCenter[];
 
-    @OneToMany(() => OperatingHour, (o) => o.medicalCenter, { cascade: true })
-    operatingHours!: OperatingHour[];
+  @OneToMany(() => OperatingHour, (o) => o.medicalCenter, { cascade: true })
+  operatingHours!: OperatingHour[];
 
-    @OneToMany(() => Doctor, (doctor) => doctor.medicalCenter, { cascade: true })
-    doctors!: Doctor[];
+  @OneToMany(() => Doctor, (doctor) => doctor.medicalCenter, { cascade: true })
+  doctors!: Doctor[];
 
-    @OneToMany(() => Medication, (medication) => medication.medicalCenter, { cascade: true })
-    medications!: Medication[];
+  @OneToMany(() => Medication, (medication) => medication.medicalCenter, {
+    cascade: true,
+  })
+  medications!: Medication[];
 
-    @CreateDateColumn({ comment: "Data de criação do registro." })
-    createdAt!: Date;
+  @CreateDateColumn({ comment: 'Data de criação do registro.' })
+  createdAt!: Date;
 
-    @UpdateDateColumn({ comment: "Data da última atualização do registro." })
-    updatedAt!: Date;
+  @UpdateDateColumn({ comment: 'Data da última atualização do registro.' })
+  updatedAt!: Date;
 
-    @DeleteDateColumn({ comment: "Data de exclusão." })
-    deletedAt!: Date;
+  @DeleteDateColumn({ comment: 'Data de exclusão.' })
+  deletedAt!: Date;
 }

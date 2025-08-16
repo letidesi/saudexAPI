@@ -1,8 +1,8 @@
-import { PermissionType } from "./Type/PermissionTypeEnum";
+import { PermissionType } from './Type/PermissionTypeEnum';
 
 export const userPermissions: PermissionType[] = [
-    PermissionType.viewMedicalCenter,
-    PermissionType.viewUser,
-    PermissionType.updateOwnUser,
-    PermissionType.deleteOwnUser,
+  PermissionType.viewMedicalCenter,
+  PermissionType.viewUser,
+  PermissionType.updateOwnUser,
+  PermissionType.deleteOwnUser,
 ];

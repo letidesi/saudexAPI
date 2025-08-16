@@ -1,9 +1,9 @@
-import "dotenv/config";
+import 'dotenv/config';
 
 export const config = {
   server: {
     port: process.env.PORT || 3000,
-    env: process.env.NODE_ENV || "development",
+    env: process.env.NODE_ENV || 'development',
   },
 
   database: {
@@ -13,11 +13,11 @@ export const config = {
     password: process.env.DB_PASS,
     name: process.env.DB_NAME,
     encrypt: true,
-    trustServerCertificate: true
+    trustServerCertificate: true,
   },
 
   swagger: {
-    serverUrl: process.env.SWAGGER_SERVER_URL || "http://localhost:3000/api",
-    hideSensitive: process.env.SWAGGER_HIDE_SENSITIVE === "true",
+    serverUrl: process.env.SWAGGER_SERVER_URL || 'http://localhost:3000/api',
+    hideSensitive: process.env.SWAGGER_HIDE_SENSITIVE === 'true',
   },
 };
