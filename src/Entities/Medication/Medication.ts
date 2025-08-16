@@ -11,13 +11,14 @@ export class Medication extends EntityWithTimestamps {
   @ManyToOne(
     () => MedicalCenter,
     (medicalCenter) => medicalCenter.medications,
-    { nullable: false, cascade: true },
+    { nullable: false },
   )
   medicalCenter!: MedicalCenter;
 
   @Column({
-    type: 'enum',
+    type: 'nvarchar',
     enum: MedicationType,
+    length: 50,
     nullable: false,
     comment: 'Tipo de medicamento (ex: Vacina, Medicamentos e Insulina).',
   })
