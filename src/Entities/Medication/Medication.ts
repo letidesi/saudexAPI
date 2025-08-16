@@ -1,17 +1,13 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import { Entity, Column, ManyToOne } from 'typeorm';
 import { MedicalCenter } from '../MedicalCenter/MedicalCenter';
 import { MedicationType } from '../../ValueObjects/Medication/MedicationEnum';
+import { EntityWithTimestamps } from '../../Helpers/EntityWithTimestamps';
 
 @Entity('Medications', {
   comment:
     'Tabela que armazena os medicamentos cadastrados nos centros médicos.',
 })
-export class Medication {
-  @PrimaryGeneratedColumn('uuid', {
-    comment: 'Identificador único do medicamento (UUID).',
-  })
-  id!: string;
-
+export class Medication extends EntityWithTimestamps {
   @ManyToOne(
     () => MedicalCenter,
     (medicalCenter) => medicalCenter.medications,
