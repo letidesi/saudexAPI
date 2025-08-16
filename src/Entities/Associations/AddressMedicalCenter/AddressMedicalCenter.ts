@@ -13,6 +13,6 @@ export class AddressMedicalCenter {
   @ManyToOne(() => Address, (a) => a.addressMedicalCenters, { nullable: false })
   address!: Address;
 
-  @Column({ type: 'boolean', default: false })
+  @Column({ type: 'bit', default: false })
   isPrincipal!: boolean;
 }
