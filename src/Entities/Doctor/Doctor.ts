@@ -9,7 +9,6 @@ import { EntityWithTimestamps } from '../../Helpers/EntityWithTimestamps';
 export class Doctor extends EntityWithTimestamps {
   @ManyToOne(() => MedicalCenter, (medicalCenter) => medicalCenter.doctors, {
     nullable: false,
-    cascade: true,
   })
   medicalCenter!: MedicalCenter;
 
@@ -30,8 +29,9 @@ export class Doctor extends EntityWithTimestamps {
   specialty!: string;
 
   @Column({
-    type: 'enum',
+    type: 'nvarchar',
     enum: Gender,
+    length: 50,
     nullable: false,
     comment: 'Gênero do médico.',
   })
