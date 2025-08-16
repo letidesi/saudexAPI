@@ -1,24 +1,12 @@
-import {
-  Column,
-  CreateDateColumn,
-  DeleteDateColumn,
-  Entity,
-  OneToMany,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { PermissionType } from '../../ValueObjects/Permission/Type/PermissionTypeEnum';
 import { RolePermission } from '../Associations/RolePermission/RolePermission';
+import { EntityWithTimestamps } from '../../Helpers/EntityWithTimestamps';
 
 @Entity('Permission', {
   comment: 'Tabela que armazena os tipos de permissões disponíveis no sistema.',
 })
-export class Permission {
-  @PrimaryGeneratedColumn('uuid', {
-    comment: 'Identificador único da permissão (UUID).',
-  })
-  id!: string;
-
+export class Permission extends EntityWithTimestamps {
   @Column({
     type: 'nvarchar',
     length: 100,
@@ -30,13 +18,4 @@ export class Permission {
 
   @OneToMany(() => RolePermission, (r) => r.permission, { cascade: true })
   roles!: RolePermission[];
-
-  @CreateDateColumn({ comment: 'Data de criação do registro.' })
-  createdAt!: Date;
-
-  @UpdateDateColumn({ comment: 'Data da última atualização do registro.' })
-  updatedAt!: Date;
-
-  @DeleteDateColumn({ comment: 'Data de exclusão lógica (soft delete).' })
-  deletedAt!: Date;
 }
