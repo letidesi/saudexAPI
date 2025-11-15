@@ -1,28 +1,24 @@
 {
   "name": "saudexapi",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A nova API Saudex 2.0 foi desenvolvida para facilitar o acesso de pessoas diabéticas aos insumos essenciais para o tratamento com insulina. Seu principal objetivo é garantir que aqueles que necessitam de insumos gratuitos tenham um suporte eficiente, seguro e acessível.",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/Config/server.ts",
+    "dev": "ts-node-dev --respawn --transpile-only src/config/server.ts",
     "start": "node dist/server.js",
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@azure/identity": "^4.11.1",
     "cors": "^2.8.5",
     "dotenv": "^16.6.1",
-    "mssql": "^11.0.1",
+    "mongoose": "^8.19.4",
     "node-fetch": "^3.3.2",
-    "reflect-metadata": "^0.2.2",
     "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.1",
-    "typeorm": "^0.3.21"
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
