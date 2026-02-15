@@ -5,4 +5,6 @@ export interface MedicationDocument extends Document {
   type: string;
   name: string;
   quantity: number;
+  createdAt: Date;
+  updatedAt: Date;
 }

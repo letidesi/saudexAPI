@@ -8,4 +8,6 @@ export interface DoctorScheduleDocument extends Document {
     start: string;
     end: string;
   }>;
+  createdAt: Date;
+  updatedAt: Date;
 }

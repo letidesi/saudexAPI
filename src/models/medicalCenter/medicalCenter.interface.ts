@@ -9,4 +9,6 @@ export interface MedicalCenterDocument extends Document {
   operatingHours: Types.ObjectId[];
   doctors: Types.ObjectId[];
   medications: Types.ObjectId[];
+  createdAt: Date;
+  updatedAt: Date;
 }

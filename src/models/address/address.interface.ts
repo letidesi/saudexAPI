@@ -1,4 +1,4 @@
-import { Types } from "mongoose";
+import { Types } from 'mongoose';
 
 export interface AddressDocument extends Document {
   street: string;
@@ -10,4 +10,6 @@ export interface AddressDocument extends Document {
   zipCode: string;
   addressMedicalCenters: Types.ObjectId[];
   user?: Types.ObjectId;
+  createdAt: Date;
+  updatedAt: Date;
 }

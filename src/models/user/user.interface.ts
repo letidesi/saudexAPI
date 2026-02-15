@@ -7,4 +7,6 @@ export interface UserDocument extends Document {
   contactUsers: Types.ObjectId[];
   address?: Types.ObjectId;
   roles: Types.ObjectId[];
+  createdAt: Date;
+  updatedAt: Date;
 }

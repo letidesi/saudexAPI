@@ -4,4 +4,6 @@ export interface AddressMedicalCenterDocument extends Document {
   medicalCenter: Types.ObjectId;
   address: Types.ObjectId;
   isPrincipal: boolean;
+  createdAt: Date;
+  updatedAt: Date;
 }

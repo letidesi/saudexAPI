@@ -4,4 +4,6 @@ export interface RoleDocument extends Document {
   type: string;
   users: Types.ObjectId[];
   permissions: Types.ObjectId[];
+  createdAt: Date;
+  updatedAt: Date;
 }

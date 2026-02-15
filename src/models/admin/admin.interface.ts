@@ -1,4 +1,4 @@
-import { Types } from "mongoose";
+import { Document, Types } from 'mongoose';
 
 export interface AdminDocument extends Document {
   firstName: string;
@@ -6,4 +6,6 @@ export interface AdminDocument extends Document {
   passwordHash: string;
   contacts: Types.ObjectId[];
   address?: Types.ObjectId;
+  createdAt: Date;
+  updatedAt: Date;
 }

@@ -6,4 +6,6 @@ export interface ContactDocument extends Document {
   contactAdmins: Types.ObjectId[];
   contactMedicalCenters: Types.ObjectId[];
   contactUsers: Types.ObjectId[];
+  createdAt: Date;
+  updatedAt: Date;
 }

@@ -6,4 +6,6 @@ export interface DoctorDocument extends Document {
   specialty: string;
   gender: string;
   availableTickets: number;
+  createdAt: Date;
+  updatedAt: Date;
 }

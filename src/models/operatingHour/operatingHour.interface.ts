@@ -5,4 +5,6 @@ export interface OperatingHourDocument extends Document {
   dayOfWeek: string;
   openTime: string;
   closeTime: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
