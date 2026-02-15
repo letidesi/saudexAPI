@@ -3,7 +3,7 @@ import cors from 'cors';
 import { setupSwagger } from './swagger';
 import { config } from './config';
 import { connectMongo } from './db';
-import adminCreateRoutes from '../features/admin/create/adminCreate.routes';
+import adminRoutes from '../features/admin/admin.routes';
 
 const app = express();
 
@@ -15,7 +15,7 @@ connectMongo();
 setupSwagger(app);
 
 // Routes
-app.use('/api/admin', adminCreateRoutes);
+app.use('/api/admin', adminRoutes);
 
 app.get('/', (req, res) => {
   res.redirect('/swagger');
