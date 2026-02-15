@@ -1,6 +1,7 @@
 import { Application } from 'express';
 import * as swaggerUi from 'swagger-ui-express';
 import swaggerJSDoc from 'swagger-jsdoc';
+import { adminPaths } from '../docs/openapi';
 
 const hideSensitive = process.env.SWAGGER_HIDE_SENSITIVE === 'true';
 
@@ -14,10 +15,13 @@ const options: swaggerJSDoc.Options = {
     },
     servers: [
       {
-        url: process.env.SWAGGER_SERVER_URL || 'http://localhost:3000/api',
+        url: process.env.SWAGGER_SERVER_URL || 'http://localhost:3000',
         description: 'Servidor Local',
       },
     ],
+    paths: {
+      ...adminPaths,
+    },
     components: {
       securitySchemes: {
         BearerAuth: {
@@ -28,7 +32,7 @@ const options: swaggerJSDoc.Options = {
       },
     },
   },
-  apis: ['./src/routes/*.ts'],
+  apis: [],
 };
 
 const swaggerSpec = swaggerJSDoc(options);
