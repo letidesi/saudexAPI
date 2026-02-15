@@ -43,29 +43,29 @@ SaudexAPI é uma solução completa para gestão de:
 
 ### 🔹 Valores Principais
 
-| Objetivo | Descrição |
-|----------|-----------|
-| **Centralizar** | Unificar informações de saúde em uma única plataforma |
-| **Facilitar** | Simplificar o acesso a medicamentos e profissionais |
-| **Segurança** | Proteger dados sensíveis com autenticação e autorização |
+| Objetivo           | Descrição                                                              |
+| ------------------ | ---------------------------------------------------------------------- |
+| **Centralizar**    | Unificar informações de saúde em uma única plataforma                  |
+| **Facilitar**      | Simplificar o acesso a medicamentos e profissionais                    |
+| **Segurança**      | Proteger dados sensíveis com autenticação e autorização                |
 | **Acessibilidade** | Garantir suporte confiável para pessoas em situação de vulnerabilidade |
 
 ---
 
 ## 🛠️ Stack Tecnológico
 
-| Camada | Tecnologias |
-|--------|-------------|
-| **Runtime** | Node.js 18+ |
-| **Linguagem** | TypeScript 5.8 |
-| **Framework Web** | Express 5.0 |
-| **Banco de Dados** | MongoDB 8.19 (Mongoose) |
-| **Validação** | Mongoose Schemas com TypeScript Interfaces |
-| **Testes** | Jest 30 + Supertest |
-| **Documentação API** | Swagger/OpenAPI com swagger-jsdoc |
-| **Linting** | ESLint + Prettier |
-| **Variáveis de Ambiente** | dotenv |
-| **Dev Tools** | ts-node-dev, nodemon |
+| Camada                    | Tecnologias                                |
+| ------------------------- | ------------------------------------------ |
+| **Runtime**               | Node.js 18+                                |
+| **Linguagem**             | TypeScript 5.8                             |
+| **Framework Web**         | Express 5.0                                |
+| **Banco de Dados**        | MongoDB 8.19 (Mongoose)                    |
+| **Validação**             | Mongoose Schemas com TypeScript Interfaces |
+| **Testes**                | Jest 30 + Supertest                        |
+| **Documentação API**      | Swagger/OpenAPI com swagger-jsdoc          |
+| **Linting**               | ESLint + Prettier                          |
+| **Variáveis de Ambiente** | dotenv                                     |
+| **Dev Tools**             | ts-node-dev, nodemon                       |
 
 ---
 
@@ -117,6 +117,7 @@ SWAGGER_URL=/api-docs
 ```
 
 📝 Exemplo com MongoDB local:
+
 ```env
 MONGO_URI=mongodb://localhost:27017/saudexapi
 ```
@@ -149,6 +150,7 @@ npm start
 ### Documentação Interativa
 
 Acesse a documentação Swagger em:
+
 ```
 http://localhost:3000/api-docs
 ```
@@ -230,6 +232,7 @@ npm test -- src/tests/admin/create/adminCreate.test.ts
 ### Suites de Testes Incluídas
 
 ✅ **Admin Create** (`src/tests/admin/create/adminCreate.test.ts`)
+
 - ✓ Criar admin com dados válidos
 - ✓ Validar campos obrigatórios
 - ✓ Persistência em banco de dados
@@ -296,13 +299,13 @@ Acesse `http://localhost:3000/api-docs` para documentação interativa.
 
 #### Admin
 
-| Método | Endpoint | Descrição |
-|--------|----------|-----------|
-| `POST` | `/api/admin` | Criar novo admin |
-| `GET` | `/api/admin` | Listar admins |
-| `GET` | `/api/admin/:id` | Obter admin por ID |
-| `PUT` | `/api/admin/:id` | Atualizar admin |
-| `DELETE` | `/api/admin/:id` | Deletar admin |
+| Método   | Endpoint         | Descrição          |
+| -------- | ---------------- | ------------------ |
+| `POST`   | `/api/admin`     | Criar novo admin   |
+| `GET`    | `/api/admin`     | Listar admins      |
+| `GET`    | `/api/admin/:id` | Obter admin por ID |
+| `PUT`    | `/api/admin/:id` | Atualizar admin    |
+| `DELETE` | `/api/admin/:id` | Deletar admin      |
 
 #### (Mais endpoints em desenvolvimento)
 
@@ -319,6 +322,7 @@ Acesse `http://localhost:3000/api-docs` para documentação interativa.
 ### Permissions
 
 Controle granular de permissões:
+
 - `CREATE_ADMIN`
 - `UPDATE_ADMIN`
 - `DELETE_ADMIN`
@@ -336,6 +340,7 @@ Error: connect ECONNREFUSED 127.0.0.1:27017
 ```
 
 **Solução**: Verificar se MongoDB está rodando:
+
 ```bash
 # Windows Services
 services.msc  # Procurar por MongoDB
@@ -351,9 +356,10 @@ Exceeded timeout of 30000 ms for a hook
 ```
 
 **Solução**: Aumentar timeout no `jest.config.js`:
+
 ```javascript
 {
-  testTimeout: 60000  // 60 segundos
+  testTimeout: 60000; // 60 segundos
 }
 ```
 
@@ -438,6 +444,7 @@ Este projeto é licenciado sob a [Licença ISC](LICENSE).
 ## 👥 Autores & Colaboradores
 
 - **Desenvolvido com ❤️** para ajudar pessoas
+
 ---
 
 ## 📞 Suporte
