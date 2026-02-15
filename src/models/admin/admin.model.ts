@@ -14,4 +14,4 @@ const AdminSchema = new Schema<AdminDocument>(
   },
 );
 
-export const Admin = model('Admin', AdminSchema);
+export const Admin = model('Admin', AdminSchema, 'admins');
