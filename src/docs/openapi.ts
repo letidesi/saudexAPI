@@ -28,4 +28,25 @@ export const adminPaths = {
       },
     },
   },
+  '/api/admin/{id}': {
+    get: {
+      summary: 'Obter admin por ID',
+      tags: ['Admin'],
+      parameters: [
+        {
+          name: 'id',
+          in: 'path',
+          required: true,
+          schema: { type: 'string' },
+          description: 'ID do admin a ser encontrado',
+        },
+      ],
+      responses: {
+        200: { description: 'Admin encontrado' },
+        400: { description: 'ID inválido' },
+        404: { description: 'Admin não encontrado' },
+        500: { description: 'Erro servidor' },
+      },
+    },
+  },
 };
