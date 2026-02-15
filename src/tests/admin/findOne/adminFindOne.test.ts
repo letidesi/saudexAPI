@@ -1,6 +1,5 @@
 import request from 'supertest';
 import express from 'express';
-import { connectMongo, disconnectMongo } from '../../../config/db';
 import adminRoutes from '../../../features/admin/admin.routes';
 import { Admin } from '../../../models/admin/admin.model';
 
@@ -10,10 +9,6 @@ app.use('/api/admin', adminRoutes);
 
 describe('Admin FindOne API Integration', () => {
   let adminId: string;
-
-  beforeAll(async () => {
-    await connectMongo();
-  }, 30000);
 
   beforeEach(async () => {
     const admin = await Admin.create({
@@ -27,10 +22,6 @@ describe('Admin FindOne API Integration', () => {
 
   afterEach(async () => {
     await Admin.deleteMany({});
-  });
-
-  afterAll(async () => {
-    await disconnectMongo();
   });
 
   describe('GET /api/admin/:id', () => {
