@@ -1,22 +1,13 @@
-import { Schema, model, Types } from "mongoose";
+import { Schema, model, Types } from 'mongoose';
+import { UserRoleDocument } from './userRole.interface';
 
-const UserRoleSchema = new Schema(
-  {
-    user: {
-      type: Types.ObjectId,
-      ref: "User",
-      required: true,
+export const UserRole = model(
+  'UserRole',
+  new Schema<UserRoleDocument>(
+    {
+      user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+      role: { type: Schema.Types.ObjectId, ref: 'Role', required: true },
     },
-    role: {
-      type: Types.ObjectId,
-      ref: "Role",
-      required: true,
-    },
-  },
-  {
-    timestamps: true,
-    collection: "UserRoles",
-  }
+    { timestamps: true, collection: 'UserRoles' },
+  ),
 );
-
-export const UserRole = model("UserRole", UserRoleSchema);

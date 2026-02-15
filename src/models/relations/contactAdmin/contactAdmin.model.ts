@@ -1,22 +1,13 @@
-import { Schema, model, Types } from "mongoose";
+import { Schema, model, Types } from 'mongoose';
+import { ContactAdminDocument } from './contactAdmin.interface';
 
-const ContactAdminSchema = new Schema(
-  {
-    admin: {
-      type: Types.ObjectId,
-      ref: "Admin",
-      required: true,
+export const ContactAdmin = model(
+  'ContactAdmin',
+  new Schema<ContactAdminDocument>(
+    {
+      admin: { type: Schema.Types.ObjectId, ref: 'Admin', required: true },
+      contact: { type: Schema.Types.ObjectId, ref: 'Contact', required: true },
     },
-    contact: {
-      type: Types.ObjectId,
-      ref: "Contact",
-      required: true,
-    },
-  },
-  {
-    timestamps: true,
-    collection: "ContactAdmin",
-  }
+    { timestamps: true, collection: 'ContactAdmin' },
+  ),
 );
-
-export const ContactAdmin = model("ContactAdmin", ContactAdminSchema);

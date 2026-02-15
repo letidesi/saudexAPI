@@ -1,25 +1,17 @@
-import { Schema, model, Types } from "mongoose";
-
-const ContactMedicalCenterSchema = new Schema(
-  {
-    medicalCenter: {
-      type: Types.ObjectId,
-      ref: "MedicalCenter",
-      required: true,
-    },
-    contact: {
-      type: Types.ObjectId,
-      ref: "Contact",
-      required: true,
-    },
-  },
-  {
-    timestamps: true,
-    collection: "ContactMedicalCenter",
-  }
-);
+import { Schema, model, Types } from 'mongoose';
+import { ContactMedicalCenterDocument } from './contactMedicalCenter.interface';
 
 export const ContactMedicalCenter = model(
-  "ContactMedicalCenter",
-  ContactMedicalCenterSchema
+  'ContactMedicalCenter',
+  new Schema<ContactMedicalCenterDocument>(
+    {
+      medicalCenter: {
+        type: Schema.Types.ObjectId,
+        ref: 'MedicalCenter',
+        required: true,
+      },
+      contact: { type: Schema.Types.ObjectId, ref: 'Contact', required: true },
+    },
+    { timestamps: true, collection: 'ContactMedicalCenter' },
+  ),
 );

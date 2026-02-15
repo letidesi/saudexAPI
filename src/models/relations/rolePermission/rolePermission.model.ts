@@ -1,22 +1,17 @@
-import { Schema, model, Types } from "mongoose";
+import { Schema, model, Types } from 'mongoose';
+import { RolePermissionDocument } from './rolePermission.interface';
 
-const RolePermissionSchema = new Schema(
-  {
-    role: {
-      type: Types.ObjectId,
-      ref: "Role",
-      required: true,
+export const RolePermission = model(
+  'RolePermission',
+  new Schema<RolePermissionDocument>(
+    {
+      role: { type: Schema.Types.ObjectId, ref: 'Role', required: true },
+      permission: {
+        type: Schema.Types.ObjectId,
+        ref: 'Permission',
+        required: true,
+      },
     },
-    permission: {
-      type: Types.ObjectId,
-      ref: "Permission",
-      required: true,
-    },
-  },
-  {
-    timestamps: true,
-    collection: "RolePermission",
-  }
+    { timestamps: true, collection: 'RolePermission' },
+  ),
 );
-
-export const RolePermission = model("RolePermission", RolePermissionSchema);
