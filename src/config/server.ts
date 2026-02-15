@@ -18,7 +18,7 @@ setupSwagger(app);
 app.use('/api/admin', adminCreateRoutes);
 
 app.get('/', (req, res) => {
-  res.send('ASaudex API 2.0 is starting!');
+  res.redirect('/swagger');
 });
 
 app.listen(config.server.port, () => {

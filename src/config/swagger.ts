@@ -39,7 +39,7 @@ const swaggerSpec = swaggerJSDoc(options);
 
 export function setupSwagger(app: Application) {
   app.use(
-    '/api-docs',
+    '/swagger',
     swaggerUi.serve,
     swaggerUi.setup(swaggerSpec, {
       swaggerOptions: {
@@ -52,5 +52,5 @@ export function setupSwagger(app: Application) {
         : '',
     }),
   );
-  console.log('Swagger can be accessed at http://localhost:3000/api-docs');
+  console.log('Swagger can be accessed at http://localhost:3000/swagger');
 }
