@@ -1,6 +1,5 @@
 import request from 'supertest';
 import express from 'express';
-import { connectMongo, disconnectMongo } from '../../../config/db';
 import adminCreateRoutes from '../../../features/admin/create/adminCreate.routes';
 import { Admin } from '../../../models/admin/admin.model';
 
@@ -9,17 +8,9 @@ app.use(express.json());
 app.use('/api/admin', adminCreateRoutes);
 
 describe('Admin Create API Integration', () => {
-  beforeAll(async () => {
-    await connectMongo();
-  }, 30000);
-
   afterEach(async () => {
     // Clean up after each test
     await Admin.deleteMany({});
-  });
-
-  afterAll(async () => {
-    await disconnectMongo();
   });
 
   describe('POST /api/admin', () => {
