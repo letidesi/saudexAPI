@@ -3,8 +3,12 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const MONGODB_URI =
-  process.env.MONGO_URI || 'teste';
+const MONGODB_URI = (process.env.MONGO_TEST_URI) as string;
+
+if (!MONGODB_URI) {
+  throw new Error('MONGO_TEST_URI or MONGO_URI must be defined in .env');
+}
+
 beforeAll(async () => {
   try {
     await mongoose.connect(MONGODB_URI, {
